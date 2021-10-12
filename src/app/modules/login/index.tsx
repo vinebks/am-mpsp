@@ -8,16 +8,14 @@ import FooterComponent from '../../components/footer';
 
 export default function LoginPage(): JSX.Element {
   return (
-    <Box style={{ backgroundColor: '#dcdcea' }}>
-      <Box>
-        <img
-          src={backMpsp}
-          alt="Logo"
-          style={{ width: '100%', height: `100%` }}
-        />
-      </Box>
-      <HeaderProject />
-      <Box display="flex" flexDirection="row" flex={1} height="75vh">
+    <Box style={{ backgroundColor: '#1b1c1c' }}>
+      <Box
+        display="flex"
+        flexDirection="row"
+        flex={1}
+        height="100vh"
+        width="100%"
+      >
         <Box
           display="flex"
           flexDirection="column"
@@ -34,22 +32,8 @@ export default function LoginPage(): JSX.Element {
           >
             <LoginForm />
           </Box>
-          <Box
-            display="flex"
-            style={{
-              backgroundColor: 'white',
-              boxShadow: '-moz-initial',
-              color: `grey`,
-            }}
-            flex={1}
-            maxHeight={100}
-            minWidth="100%"
-            justifyContent="center"
-            alignContent="middle"
-            padding={2}
-          >
-            <FooterComponent />
-          </Box>
+
+          <FooterComponent />
         </Box>
       </Box>
     </Box>
