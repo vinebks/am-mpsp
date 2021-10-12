@@ -30,34 +30,60 @@ export default function LoginForm(): JSX.Element {
 
   return (
     <Box
-      borderRadius="15px"
-      width="fit-content"
-      style={{ backgroundColor: 'white' }}
+      borderRadius="20px"
+      boxShadow={20}
+      width="100%"
+      style={{ backgroundColor: '#252626', border: 'solid 4px yellow' }}
     >
-      <Box margin={8} style={{ backgroundColor: 'white' }}>
+      <Box margin={10} style={{ backgroundColor: '#252626' }}>
         <Box display="flex" justifyContent="center" paddingBottom={4}>
           <h2>Insira seu Login</h2>
         </Box>
         <Form onSubmit={formik.handleSubmit}>
+          <Typography
+            variant="subtitle2"
+            style={{ color: 'white', fontSize: '16px', fontWeight: 'bold' }}
+          >
+            Usuario
+          </Typography>
           <TextField
             name="username"
-            label="Insira seu login"
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '15px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingLeft: '5px',
+            }}
+            variant="standard"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.username}
-            error={!!formik.errors.username && !!formik.touched.username}
+            // error={!!formik.errors.username && !!formik.touched.username}
             type="string"
             id="login__username"
           />
-
+          <Typography
+            variant="subtitle2"
+            style={{ color: 'white', fontSize: '16px', fontWeight: 'bold' }}
+          >
+            Senha
+          </Typography>
           <TextField
             name="password"
-            label="Insira sua senha"
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '15px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingLeft: '5px',
+            }}
+            variant="standard"
             type="password"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
-            error={!!formik.errors.password && !!formik.touched.password}
+            // error={!!formik.errors.password && !!formik.touched.password}
             id="login__password"
           />
 
@@ -65,20 +91,23 @@ export default function LoginForm(): JSX.Element {
             display="flex"
             justifyContent="center"
             paddingTop={6}
-            paddingBottom={2}
+            paddingBottom={5}
           >
             <Button
               variant="contained"
-              onClick={
-                (formik.submitForm,
-                (): void => {
-                  history.push('/home');
-                })
-              }
+              size="large"
+              // onClick={
+              //   (formik.submitForm,
+              //   (): void => {
+              //     history.push('/home');
+              //   })
+              // }
               type="submit"
               style={{
-                backgroundColor: '#3c5b87',
-                color: 'white',
+                backgroundColor: 'yellow',
+                color: 'black',
+                fontWeight: 'bolder',
+                borderRadius: '20px',
               }}
             >
               Entrar
@@ -86,30 +115,14 @@ export default function LoginForm(): JSX.Element {
           </Box>
 
           <Typography variant="subtitle2" align="center">
-            <Link variant="inherit" href="/register">
-              Ainda nao possui uma conta? Registre-se
+            <Link
+              variant="inherit"
+              href="/register"
+              style={{ color: 'yellow' }}
+            >
+              Esqueci minha senha
             </Link>
           </Typography>
-          <Box display="flex" flex={1} justifyContent="center" paddingTop={2}>
-            <FacebookLogin
-              buttonStyle={{
-                color: 'white',
-                backgroundColor: '#2a5eca',
-                borderRadius: '10px',
-                width: '20vh',
-                height: '5vh',
-                border: 'none',
-                fontWeight: 'bold',
-                fontSize: '15px',
-                minHeight: '5vh',
-                minWidth: '20vh',
-              }}
-              appId="715392232719783"
-              fields="name, email"
-              cssClass="my-facebook-button-class"
-              callback={FacebookLogin.call}
-            />
-          </Box>
         </Form>
       </Box>
     </Box>
