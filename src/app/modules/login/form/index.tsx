@@ -5,6 +5,8 @@ import FacebookLogin from 'react-facebook-login';
 import { Form } from '../../../components/Form';
 import Yup from '../../../util/yup';
 import history from '../../../util/browser-history';
+import EyLogo from '../../../assets/eylogo.png';
+import { fetchUserData } from '../../../redux/ducks/user';
 
 type FormValues = {
   username: string;
@@ -24,7 +26,7 @@ export default function LoginForm(): JSX.Element {
       }),
     onSubmit: (values: FormValues) => {
       const { username, password } = values;
-      console.log(values);
+      fetchUserData({ username, password });
     },
   });
 
@@ -37,7 +39,7 @@ export default function LoginForm(): JSX.Element {
     >
       <Box margin={10} style={{ backgroundColor: '#252626' }}>
         <Box display="flex" justifyContent="center" paddingBottom={4}>
-          <h2>Insira seu Login</h2>
+          <img src={EyLogo} alt="logo" style={{ maxWidth: `140px` }} />
         </Box>
         <Form onSubmit={formik.handleSubmit}>
           <Typography

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Divider, Typography } from '@material-ui/core';
-import LogoMpsp from '../../assets/logo-mpsp-transparente.png';
+import EyLogo from '../../assets/eylogo.png';
 
 export default function FooterComponent(): JSX.Element {
   return (
@@ -25,18 +25,22 @@ export default function FooterComponent(): JSX.Element {
         alignContent="center"
       >
         <Box>
-          <img src={LogoMpsp} alt="logo" style={{ maxWidth: `170px` }} />
+          <img src={EyLogo} alt="logo" style={{ maxWidth: `110px` }} />
         </Box>
         <Divider variant="middle" orientation="vertical" />
-        <Typography paragraph align="center">
-          MINISTÉRIO PÚBLICO DO ESTADO DE SÃO PAULO
-          <Typography variant="subtitle2">
-            Rua Riachuelo, 115 - São Paulo - CEP 01007-904 - PABX: 11
-            <p />
-            3119.9000 Horário de Atendimento: das 9h às 19h
-            <p />
-            Todos os direitos reservados
-          </Typography>
+        <Typography
+          variant="subtitle2"
+          align="center"
+          style={{ maxWidth: '60%' }}
+        >
+          EY refere-se à organização global e pode se referir a uma ou mais das
+          firmas-membro da Ernst & Young Global Limited, cada uma das quais é
+          uma entidade legal separada. A Ernst & Young Global Limited, uma
+          empresa do Reino Unido limitada por garantia, não presta serviços aos
+          clientes. A EY cumpre e observa todas as normas legais e regulatórias
+          profissionais. Consulte a EY Br para saber quais serviços são
+          oferecidos no Brasil. A EY Br não presta serviços advocatícios no
+          Brasil.
         </Typography>
       </Box>
     </Box>

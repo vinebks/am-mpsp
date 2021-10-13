@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import LoginForm from './form/index';
-import HeaderProject from '../../components/header';
-import backMpsp from '../../assets/backNavBar.png';
 
 import FooterComponent from '../../components/footer';
 
