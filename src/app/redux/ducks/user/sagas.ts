@@ -11,6 +11,7 @@ import {
 import { fetchUserDataError, fetchUserDataSuccess, UserActionType } from '.';
 import { IReducerAction } from '..';
 import API from '../../../services/api';
+import history from '../../../util/browser-history';
 
 type UserAuth = {
   token: string;
@@ -21,6 +22,7 @@ type UserAuth = {
 function* handleFetchUserInfos(action: IReducerAction<any>): Generator {
   try {
     const { username, password } = action.payload;
+    console.log('chegou aqui');
 
     const response = (yield call(
       API.post,
@@ -31,7 +33,10 @@ function* handleFetchUserInfos(action: IReducerAction<any>): Generator {
       },
     )) as UserAuth;
 
-    yield put(fetchUserDataSuccess(response.name));
+    if (response.name) {
+      yield put(fetchUserDataSuccess(response.name));
+      history.push('/home');
+    }
   } catch (err) {
     yield put(fetchUserDataError());
     toast.error('Login/Senha incorretos !');

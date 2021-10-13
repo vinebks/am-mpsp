@@ -9,7 +9,7 @@ export const initialState: IUserState = {
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const accountReducer = (
+export const userReducer = (
   state = initialState,
   action: IReducerAction<string>,
 ) => {
@@ -22,12 +22,12 @@ export const accountReducer = (
     case UserActionType.FETCH_USER_INFO_SUCCESS:
       return produce(state, draft => {
         draft.name = action.payload;
-        draft.isLoading = true;
+        draft.isLoading = false;
       });
 
     case UserActionType.FETCH_USER_INFO_ERROR:
       return produce(state, draft => {
-        draft.isLoading = true;
+        draft.isLoading = false;
       });
 
     default:

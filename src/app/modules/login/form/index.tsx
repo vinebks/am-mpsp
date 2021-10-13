@@ -2,11 +2,13 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { Box, TextField, Button, Link, Typography } from '@material-ui/core';
 import FacebookLogin from 'react-facebook-login';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from '../../../components/Form';
 import Yup from '../../../util/yup';
 import history from '../../../util/browser-history';
 import EyLogo from '../../../assets/eylogo.png';
 import { fetchUserData } from '../../../redux/ducks/user';
+import { IApplicationState } from '../../../redux/ducks';
 
 type FormValues = {
   username: string;
@@ -14,6 +16,10 @@ type FormValues = {
 };
 
 export default function LoginForm(): JSX.Element {
+  const { isLoading } = useSelector((state: IApplicationState) => state.user);
+
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -26,12 +32,14 @@ export default function LoginForm(): JSX.Element {
       }),
     onSubmit: (values: FormValues) => {
       const { username, password } = values;
-      fetchUserData({ username, password });
+      console.log('Testando dispatch');
+      dispatch(fetchUserData({ username, password }));
     },
   });
 
   return (
     <Box
+      display="flex"
       borderRadius="20px"
       boxShadow={20}
       width="100%"
@@ -55,6 +63,7 @@ export default function LoginForm(): JSX.Element {
               borderRadius: '15px',
               justifyContent: 'center',
               alignItems: 'center',
+              height: '40px',
               paddingLeft: '5px',
             }}
             variant="standard"
@@ -77,6 +86,7 @@ export default function LoginForm(): JSX.Element {
               backgroundColor: 'white',
               borderRadius: '15px',
               justifyContent: 'center',
+              height: '40px',
               alignItems: 'center',
               paddingLeft: '5px',
             }}
@@ -98,12 +108,7 @@ export default function LoginForm(): JSX.Element {
             <Button
               variant="contained"
               size="large"
-              // onClick={
-              //   (formik.submitForm,
-              //   (): void => {
-              //     history.push('/home');
-              //   })
-              // }
+              disabled={isLoading}
               type="submit"
               style={{
                 backgroundColor: 'yellow',
