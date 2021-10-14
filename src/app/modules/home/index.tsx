@@ -15,7 +15,7 @@ export default function HomePage(): JSX.Element {
       <Box display="flex">
         <MenuAppBar />
       </Box>
-      <Box display="flex" flex={1} minHeight="63vh">
+      <Box display="flex" flex={1}>
         <HomeUser />
       </Box>
     </Box>
