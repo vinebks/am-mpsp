@@ -2,8 +2,6 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import HomeUser from './components/home-page-user';
 import MenuAppBar from '../../components/header';
-import FooterComponent from '../../components/footer';
-import backMpsp from '../../assets/backNavBar.png';
 
 export default function HomePage(): JSX.Element {
   return (
@@ -17,9 +15,9 @@ export default function HomePage(): JSX.Element {
       <Box display="flex">
         <MenuAppBar />
       </Box>
-      {/* <Box display="flex" flex={1} minHeight="63vh">
+      <Box display="flex" flex={1} minHeight="63vh">
         <HomeUser />
-      </Box> */}
+      </Box>
     </Box>
   );
 }

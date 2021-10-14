@@ -180,29 +180,7 @@ export default function HomeUser(): JSX.Element {
         width="25%"
         height="80%"
         paddingRight={3}
-      >
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          width="100%"
-          height="95%"
-          boxShadow={5}
-          style={{ backgroundColor: 'white', borderRadius: '20px' }}
-        >
-          <iframe
-            title="teste"
-            allow="microphone;"
-            width="97%"
-            height="97%"
-            style={{
-              borderRadius: '20px',
-              border: 'none',
-            }}
-            src="https://console.dialogflow.com/api-client/demo/embedded/b82bedfb-b617-41dd-8167-47fb1d43c0ac"
-          />
-        </Box>
-      </Box>
+      />
     </Box>
   );
 }
