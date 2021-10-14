@@ -1,15 +1,16 @@
-import React from 'react';
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import { Box, Link } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+import EyLogo from '../../assets/eylogo.png';
+import Profile from '../../assets/profile.png';
+import { IApplicationState } from '../../redux/ducks';
+import history from '../../util/browser-history';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,19 +26,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function MenuAppBar() {
+export default function MenuAppBar(): JSX.Element {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [underline, setUnderline] = useState('homepage');
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const { name } = useSelector((state: IApplicationState) => state.user);
 
   return (
     <Box display="flex" flex={1}>
@@ -45,68 +40,103 @@ export default function MenuAppBar() {
       <AppBar
         position="static"
         style={{
-          backgroundColor: '#dcdcea',
-          color: 'black',
+          backgroundColor: '#1b1c1c',
+          color: 'white',
         }}
       >
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
+          <Box paddingRight={5}>
+            <img src={EyLogo} alt="logo" style={{ maxWidth: `80px` }} />
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            onClick={() => setUnderline('homepage')}
+            marginRight={5}
+            height="80px"
+            borderBottom={
+              underline === 'homepage' ? 'solid 2px yellow' : 'none'
+            }
           >
-            <MenuIcon />
-          </IconButton>
-
-          <Typography variant="subtitle1" className={classes.title}>
-            <Link
-              variant="inherit"
-              href="/"
-              underline="none"
-              style={{ color: 'black' }}
+            <Typography
+              variant="subtitle1"
+              align="center"
+              className={classes.title}
             >
-              Login
-            </Link>
-          </Typography>
+              <Link
+                variant="inherit"
+                href="/home"
+                underline="none"
+                style={{
+                  color: 'yellow',
+                  fontSize: '25px',
+                  fontWeight: 'bold',
+                }}
+              >
+                Home Page
+              </Link>
+            </Typography>
+          </Box>
+
+          <Box>
+            <Box
+              display="flex"
+              alignItems="center"
+              height="80px"
+              onClick={() => setUnderline('dashboard')}
+              borderBottom={
+                underline === 'dashboard' ? 'solid 2px yellow' : 'none'
+              }
+            >
+              <Typography
+                variant="subtitle1"
+                className={classes.title}
+                style={{ flex: 1 }}
+              >
+                <Link
+                  variant="inherit"
+                  href="/home"
+                  underline="none"
+                  style={{
+                    color: 'yellow',
+                    fontSize: '25px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Dashboard
+                </Link>
+              </Typography>
+            </Box>
+          </Box>
           <Typography
             variant="subtitle1"
             className={classes.title}
-            style={{ flex: '1' }}
+            style={{
+              flex: 1,
+              color: 'white',
+              fontSize: '18px',
+              fontWeight: 'bold',
+            }}
+          />
+
+          <Typography
+            variant="subtitle1"
+            className={classes.title}
+            style={{
+              color: 'white',
+              fontSize: '18px',
+              fontWeight: 'bold',
+            }}
           >
-            Fale Conosco
+            Bem vindo(a), {name}
           </Typography>
-          {auth && (
-            <Box display="flex" alignContent="end">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
+
+          <Box display="flex" alignContent="end">
+            <Box padding={2}>
+              <img src={Profile} alt="logo" style={{ maxWidth: `70px` }} />
             </Box>
-          )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

@@ -9,27 +9,17 @@ export default function HomePage(): JSX.Element {
   return (
     <Box
       display="flex"
+      height="100vh"
       flex={1}
-      style={{ backgroundColor: '#dcdcea' }}
+      style={{ backgroundColor: '#1b1c1c' }}
       flexDirection="column"
-      // minHeight="100vh"
     >
-      <Box>
-        <img
-          src={backMpsp}
-          alt="Logo"
-          style={{ width: '100%', height: `100%` }}
-        />
-      </Box>
       <Box display="flex">
         <MenuAppBar />
       </Box>
-      <Box display="flex" flex={1} minHeight="63vh">
+      {/* <Box display="flex" flex={1} minHeight="63vh">
         <HomeUser />
-      </Box>
-      <Box display="flex" flex={1}>
-        <FooterComponent />
-      </Box>
+      </Box> */}
     </Box>
   );
 }
