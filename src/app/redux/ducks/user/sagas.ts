@@ -35,6 +35,7 @@ function* handleFetchUserInfos(action: IReducerAction<any>): Generator {
 
     if (response.name) {
       yield put(fetchUserDataSuccess(response.name));
+
       history.push('/home');
     }
   } catch (err) {

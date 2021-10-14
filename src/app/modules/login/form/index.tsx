@@ -70,6 +70,7 @@ export default function LoginForm(): JSX.Element {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.username}
+            InputProps={{ disableUnderline: true }}
             // error={!!formik.errors.username && !!formik.touched.username}
             type="string"
             id="login__username"
@@ -95,6 +96,7 @@ export default function LoginForm(): JSX.Element {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
+            InputProps={{ disableUnderline: true }}
             // error={!!formik.errors.password && !!formik.touched.password}
             id="login__password"
           />
