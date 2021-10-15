@@ -74,11 +74,41 @@ export default function MenuAppBar(): JSX.Element {
                   fontWeight: 'bold',
                 }}
               >
-                Home Page
+                Pagina Inicial
               </Link>
             </Typography>
           </Box>
 
+          <Box paddingRight={5}>
+            <Box
+              display="flex"
+              alignItems="center"
+              height="80px"
+              onClick={() => setUnderline('dashboard')}
+              borderBottom={
+                underline === 'dashboard' ? 'solid 2px yellow' : 'none'
+              }
+            >
+              <Typography
+                variant="subtitle1"
+                className={classes.title}
+                style={{ flex: 1 }}
+              >
+                <Link
+                  variant="inherit"
+                  href="/dashboard"
+                  underline="none"
+                  style={{
+                    color: 'yellow',
+                    fontSize: '25px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Dashboard
+                </Link>
+              </Typography>
+            </Box>
+          </Box>
           <Box>
             <Box
               display="flex"
@@ -96,7 +126,7 @@ export default function MenuAppBar(): JSX.Element {
               >
                 <Link
                   variant="inherit"
-                  href="/home"
+                  href="/profile"
                   underline="none"
                   style={{
                     color: 'yellow',
@@ -104,7 +134,7 @@ export default function MenuAppBar(): JSX.Element {
                     fontWeight: 'bold',
                   }}
                 >
-                  Dashboard
+                  Meu Perfil
                 </Link>
               </Typography>
             </Box>

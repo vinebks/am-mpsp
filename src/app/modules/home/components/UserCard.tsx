@@ -27,7 +27,7 @@ export default function UserCard(): JSX.Element {
     <Box display="flex" alignItems="center" flex={1}>
       <Box
         display="flex"
-        style={{ backgroundColor: '#1b1c1c' }}
+        style={{ backgroundColor: 'transparent' }}
         height="100%"
         flex={1}
       >
@@ -35,47 +35,117 @@ export default function UserCard(): JSX.Element {
           width="100%"
           display="flex"
           style={{ backgroundColor: '#1b1c1c' }}
-          // border="solid 2px yellow"
+          border="solid 1px black"
           boxShadow={20}
-          height="100px"
+          height="80px"
           justifyContent="space-between"
           margin={1}
           borderRadius={20}
         >
           <Box
+            flex={1}
             display="flex"
             borderRadius={20}
-            style={{ backgroundColor: 'white' }}
+            flexDirection="column"
+            paddingLeft={2}
+            style={{ backgroundColor: 'transparent' }}
           >
-            Testando as parada aqui
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
+            >
+              ID
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px' }}
+            >
+              BR1283710293
+            </Typography>
           </Box>
           <Box
+            flex={1}
             display="flex"
             borderRadius={20}
-            style={{ backgroundColor: 'white' }}
+            flexDirection="column"
+            paddingLeft={2}
+            style={{ backgroundColor: 'transparent' }}
           >
-            Testando as parada aqui
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
+            >
+              Nome
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px' }}
+            >
+              Vinicius Santos
+            </Typography>
           </Box>
           <Box
+            flex={1}
             display="flex"
             borderRadius={20}
-            style={{ backgroundColor: 'white' }}
+            flexDirection="column"
+            paddingLeft={2}
+            style={{ backgroundColor: 'transparent' }}
           >
-            Testando as parada aqui
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
+            >
+              Cargo
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px' }}
+            >
+              Analista Senior
+            </Typography>
           </Box>
           <Box
+            flex={1}
             display="flex"
             borderRadius={20}
-            style={{ backgroundColor: 'white' }}
+            flexDirection="column"
+            paddingLeft={2}
+            style={{ backgroundColor: 'transparent' }}
           >
-            Testando as parada aqui
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
+            >
+              Setor
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px' }}
+            >
+              PI
+            </Typography>
           </Box>
           <Box
+            flex={1}
             display="flex"
             borderRadius={20}
-            style={{ backgroundColor: 'white' }}
+            flexDirection="column"
+            paddingLeft={2}
+            style={{ backgroundColor: 'transparent' }}
           >
-            Testando as parada aqui
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
+            >
+              Salario
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'white', fontSize: '20px' }}
+            >
+              R$ 6.000,00
+            </Typography>
           </Box>
         </Box>
       </Box>
