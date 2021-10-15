@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, TextField, Typography } from '@material-ui/core';
 import Profile from '../../../assets/profile.png';
 
-export default function ProfileComponent(): JSX.Element {
+export default function UserDetails(): JSX.Element {
   return (
     <Box
       display="flex"
