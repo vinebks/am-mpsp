@@ -3,6 +3,7 @@ import { Box, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { IEmployeesdetails, openUserDetails } from '../../../redux/ducks/user';
 import { formatCurrency } from '../../../util/format';
+import { fetchEmployeeData } from '../../../redux/ducks/empoyee';
 
 type IProps = {
   users: IEmployeesdetails;
@@ -19,6 +20,7 @@ export default function UserCard(props: IProps): JSX.Element {
       alignItems="center"
       flex={1}
       onClick={() => {
+        dispatch(fetchEmployeeData({ userId: users.userId }));
         dispatch(openUserDetails());
       }}
     >
