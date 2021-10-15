@@ -21,6 +21,7 @@ export type IEmployeesdetails = {
   specficName: string;
   siglaSetor: string;
   hiringDate: string;
+  JobTitle: string;
 };
 
 export type ILoggedUser = {
@@ -59,4 +60,10 @@ export const UserActionType = {
   OPEN_USER_DETAILS: '@@user/OPEN_USER_DETAILS',
 
   CLOSE_USER_DETAILS: '@@user/CLOSE_USER_DETAILS',
+
+  FETCH_EMPLOYEES_INFO: '@@user/FETCH_EMPLOYEES_INFO',
+
+  FETCH_EMPLOYEES_INFO_SUCCESS: '@@user/FETCH_EMPLOYEES_INFO_SUCCESS',
+
+  FETCH_EMPLOYEES_INFO_ERROR: '@@user/FETCH_EMPLOYEES_INFO_ERROR',
 };

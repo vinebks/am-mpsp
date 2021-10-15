@@ -7,10 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import FormGroup from '@material-ui/core/FormGroup';
 import { Box, Link } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import EyLogo from '../../assets/eylogo.png';
 import Profile from '../../assets/profile.png';
 import { IApplicationState } from '../../redux/ducks';
-import history from '../../util/browser-history';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function MenuAppBar(): JSX.Element {
   const classes = useStyles();
+
+  const history = useHistory();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [underline, setUnderline] = useState('homepage');
@@ -114,7 +116,10 @@ export default function MenuAppBar(): JSX.Element {
               display="flex"
               alignItems="center"
               height="80px"
-              onClick={() => setUnderline('dashboard')}
+              onClick={() => {
+                setUnderline('dashboard');
+                history.push('/profile');
+              }}
               borderBottom={
                 underline === 'dashboard' ? 'solid 2px yellow' : 'none'
               }
@@ -124,18 +129,7 @@ export default function MenuAppBar(): JSX.Element {
                 className={classes.title}
                 style={{ flex: 1 }}
               >
-                <Link
-                  variant="inherit"
-                  href="/profile"
-                  underline="none"
-                  style={{
-                    color: 'yellow',
-                    fontSize: '25px',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Meu Perfil
-                </Link>
+                Meu Perfil
               </Typography>
             </Box>
           </Box>

@@ -1,31 +1,17 @@
 import React from 'react';
-import {
-  Box,
-  makeStyles,
-  Theme,
-  createStyles,
-  TextField,
-  Button,
-  Typography,
-} from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { openUserDetails } from '../../../redux/ducks/user';
+import { IEmployeesdetails, openUserDetails } from '../../../redux/ducks/user';
+import { formatCurrency } from '../../../util/format';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    dfMessenger: {
-      dfMessengerBotMessage: '#878fac',
-    },
-  }),
-);
+type IProps = {
+  users: IEmployeesdetails;
+};
 
-export default function UserCard(): JSX.Element {
-  const classes = useStyles();
-
+export default function UserCard(props: IProps): JSX.Element {
   const dispatch = useDispatch();
+
+  const { users } = props;
 
   return (
     <Box
@@ -71,7 +57,7 @@ export default function UserCard(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'white', fontSize: '20px' }}
             >
-              BR1283710293
+              {users.userId}
             </Typography>
           </Box>
           <Box
@@ -92,7 +78,7 @@ export default function UserCard(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'white', fontSize: '20px' }}
             >
-              Vinicius Santos
+              {users.Nome}
             </Typography>
           </Box>
           <Box
@@ -113,7 +99,7 @@ export default function UserCard(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'white', fontSize: '20px' }}
             >
-              Analista Senior
+              {users.JobTitle}
             </Typography>
           </Box>
           <Box
@@ -134,7 +120,7 @@ export default function UserCard(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'white', fontSize: '20px' }}
             >
-              PI
+              {users.siglaSetor}
             </Typography>
           </Box>
           <Box
@@ -155,7 +141,7 @@ export default function UserCard(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'white', fontSize: '20px' }}
             >
-              R$ 6.000,00
+              {formatCurrency(Number(users.Salary))}
             </Typography>
           </Box>
         </Box>

@@ -1,7 +1,7 @@
 import { action } from 'typesafe-actions';
 import { IUserState, UserActionType } from './types';
 import { IReducerAction } from '..';
-import { ILoggedUser } from '.';
+import { IEmployeesType, ILoggedUser } from '.';
 
 export const fetchUserData = (data: {
   username: string;
@@ -19,3 +19,14 @@ export const openUserDetails = (): IReducerAction<{}> =>
 
 export const closeUserDetails = (): IReducerAction<{}> =>
   action(UserActionType.CLOSE_USER_DETAILS, {});
+
+export const fetchEmployeesData = (setor: string): IReducerAction<string> =>
+  action(UserActionType.FETCH_EMPLOYEES_INFO, setor);
+
+export const fetchEmployeesDataSuccess = (
+  data: IEmployeesType,
+): IReducerAction<{}> =>
+  action(UserActionType.FETCH_EMPLOYEES_INFO_SUCCESS, data);
+
+export const fetchEmployeesDataError = (): IReducerAction<{}> =>
+  action(UserActionType.FETCH_EMPLOYEES_INFO_ERROR, {});

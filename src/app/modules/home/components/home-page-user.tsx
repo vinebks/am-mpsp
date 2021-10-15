@@ -16,6 +16,8 @@ import UserCard from './UserCard';
 import { IApplicationState } from '../../../redux/ducks';
 import ProfileComponent from '../../profile/component/ProfileComponent';
 import UserDetails from '../../userDetails/component/UserDetails';
+import { formatCurrency } from '../../../util/format';
+import { IEmployeesdetails } from '../../../redux/ducks/user';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,9 +33,16 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function HomeUser(): JSX.Element {
   const classes = useStyles();
 
-  const { userDetails, loggedUser } = useSelector(
-    (state: IApplicationState) => state.user,
-  );
+  const {
+    userDetails,
+    loggedUser,
+    budgetAndEmployees,
+    isLoading,
+  } = useSelector((state: IApplicationState) => state.user);
+
+  const budgetAndEmployeesIsOk = budgetAndEmployees.users
+    ? budgetAndEmployees.users
+    : [];
 
   return (
     <Box display="flex" alignItems="center" flex={1}>
@@ -115,7 +124,7 @@ export default function HomeUser(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'yellow', fontSize: '25px', fontWeight: 'bold' }}
             >
-              R$ 291.999,00
+              {formatCurrency(budgetAndEmployees.budget)}
             </Typography>
           </Box>
         </Box>
@@ -198,17 +207,14 @@ export default function HomeUser(): JSX.Element {
           <UserDetails />
         ) : (
           <Scrollbars>
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
+            {isLoading ? (
+              <Box>loading</Box>
+            ) : (
+              budgetAndEmployeesIsOk.length > 0 &&
+              budgetAndEmployeesIsOk.map((employees: IEmployeesdetails) => (
+                <UserCard users={employees} key={employees.userId} />
+              ))
+            )}
           </Scrollbars>
         )}
       </Box>
