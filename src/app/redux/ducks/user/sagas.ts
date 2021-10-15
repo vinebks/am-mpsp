@@ -8,7 +8,12 @@ import {
   select,
   delay,
 } from 'redux-saga/effects';
-import { fetchUserDataError, fetchUserDataSuccess, UserActionType } from '.';
+import {
+  fetchUserDataError,
+  fetchUserDataSuccess,
+  ILoggedUser,
+  UserActionType,
+} from '.';
 import { IReducerAction } from '..';
 import API from '../../../services/api';
 import history from '../../../util/browser-history';
@@ -31,10 +36,10 @@ function* handleFetchUserInfos(action: IReducerAction<any>): Generator {
         email: username,
         password,
       },
-    )) as UserAuth;
+    )) as ILoggedUser;
 
-    if (response.name) {
-      yield put(fetchUserDataSuccess(response.name));
+    if (response) {
+      yield put(fetchUserDataSuccess(response));
 
       history.push('/home');
     }

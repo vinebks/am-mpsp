@@ -8,6 +8,8 @@ import {
   Button,
   Typography,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { openUserDetails } from '../../../redux/ducks/user';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,8 +25,17 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function UserCard(): JSX.Element {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
   return (
-    <Box display="flex" alignItems="center" flex={1}>
+    <Box
+      display="flex"
+      alignItems="center"
+      flex={1}
+      onClick={() => {
+        dispatch(openUserDetails());
+      }}
+    >
       <Box
         display="flex"
         style={{ backgroundColor: 'transparent' }}

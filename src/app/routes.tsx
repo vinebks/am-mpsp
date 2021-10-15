@@ -6,6 +6,7 @@ import HomePage from './modules/home';
 const LoginPage = lazy(() => import('./modules/login'));
 const RegisterPage = lazy(() => import('./modules/register'));
 const ProfilePage = lazy(() => import('./modules/profile'));
+const Dashboard = lazy(() => import('./modules/dashboard'));
 
 export function Routes(): JSX.Element {
   return (
@@ -15,6 +16,7 @@ export function Routes(): JSX.Element {
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Suspense>
   );

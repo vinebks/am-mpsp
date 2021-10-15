@@ -1,17 +1,20 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 import { IReducerAction } from '..';
-import { IUserState, UserActionType } from '.';
+import { IUserState, UserActionType, ILoggedUser, IEmployeesType } from '.';
 
 export const initialState: IUserState = {
   name: '',
+  userDetails: false,
+  loggedUser: {} as ILoggedUser,
+  budgetAndEmployees: {} as IEmployeesType,
   isLoading: false,
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const userReducer = (
   state = initialState,
-  action: IReducerAction<string>,
+  action: IReducerAction<string | ILoggedUser>,
 ) => {
   switch (action.type) {
     case UserActionType.FETCH_USER_INFO:
@@ -21,13 +24,23 @@ export const userReducer = (
 
     case UserActionType.FETCH_USER_INFO_SUCCESS:
       return produce(state, draft => {
-        draft.name = action.payload;
+        draft.loggedUser = action.payload as ILoggedUser;
         draft.isLoading = false;
       });
 
     case UserActionType.FETCH_USER_INFO_ERROR:
       return produce(state, draft => {
         draft.isLoading = false;
+      });
+
+    case UserActionType.OPEN_USER_DETAILS:
+      return produce(state, draft => {
+        draft.userDetails = true;
+      });
+
+    case UserActionType.CLOSE_USER_DETAILS:
+      return produce(state, draft => {
+        draft.userDetails = false;
       });
 
     default:

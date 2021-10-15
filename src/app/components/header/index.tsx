@@ -32,7 +32,7 @@ export default function MenuAppBar(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [underline, setUnderline] = useState('homepage');
 
-  const { name } = useSelector((state: IApplicationState) => state.user);
+  const { loggedUser } = useSelector((state: IApplicationState) => state.user);
 
   return (
     <Box display="flex" flex={1}>
@@ -159,7 +159,7 @@ export default function MenuAppBar(): JSX.Element {
               fontWeight: 'bold',
             }}
           >
-            Bem vindo(a), {name}
+            Bem vindo(a), {loggedUser.cliente.name}
           </Typography>
 
           <Box display="flex" alignContent="end">

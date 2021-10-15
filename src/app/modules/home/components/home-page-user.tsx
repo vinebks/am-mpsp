@@ -11,7 +11,11 @@ import {
 } from '@material-ui/core';
 import Scrollbars from 'react-custom-scrollbars';
 import { HighlightOff } from '@material-ui/icons';
+import { useSelector } from 'react-redux';
 import UserCard from './UserCard';
+import { IApplicationState } from '../../../redux/ducks';
+import ProfileComponent from '../../profile/component/ProfileComponent';
+import UserDetails from '../../userDetails/component/UserDetails';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +30,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function HomeUser(): JSX.Element {
   const classes = useStyles();
+
+  const { userDetails, loggedUser } = useSelector(
+    (state: IApplicationState) => state.user,
+  );
 
   return (
     <Box display="flex" alignItems="center" flex={1}>
@@ -62,7 +70,7 @@ export default function HomeUser(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
               >
-                Recursos Humanos
+                {loggedUser.cliente.setor}
               </Typography>
             </Box>
           </Box>
@@ -166,37 +174,43 @@ export default function HomeUser(): JSX.Element {
         flexDirection="column"
         flex={1}
       >
-        <Box
-          flex={1}
-          display="flex"
-          style={{ backgroundColor: '#1b1c1c' }}
-          height="20vh"
-          margin={5}
-          alignItems="center"
-          justifyContent="center"
-          borderRadius={20}
-          boxShadow={20}
-        >
-          <Typography
-            variant="subtitle1"
-            style={{ color: 'yellow', fontSize: '50px', fontWeight: 'bold' }}
+        {!userDetails && (
+          <Box
+            flex={1}
+            display="flex"
+            style={{ backgroundColor: '#1b1c1c' }}
+            height="20vh"
+            margin={5}
+            alignItems="center"
+            justifyContent="center"
+            borderRadius={20}
+            boxShadow={20}
           >
-            Lista de usuarios
-          </Typography>
-        </Box>
-        <Scrollbars>
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-        </Scrollbars>
+            <Typography
+              variant="subtitle1"
+              style={{ color: 'yellow', fontSize: '50px', fontWeight: 'bold' }}
+            >
+              Lista de Colaboradores
+            </Typography>
+          </Box>
+        )}
+        {userDetails ? (
+          <UserDetails />
+        ) : (
+          <Scrollbars>
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+          </Scrollbars>
+        )}
       </Box>
     </Box>
   );

@@ -1,6 +1,52 @@
 export type IUserState = {
   readonly name: string;
+  readonly userDetails: boolean;
+  readonly loggedUser: ILoggedUser;
+  readonly budgetAndEmployees: IEmployeesType;
   readonly isLoading: boolean;
+};
+
+export type IEmployeesType = {
+  budget: number;
+  users: IEmployeesdetails[];
+};
+
+export type IEmployeesdetails = {
+  _id: string;
+  userId: string;
+  Nome: string;
+  Salary: string;
+  Pais: string;
+  locationCity: string;
+  specficName: string;
+  siglaSetor: string;
+  hiringDate: string;
+};
+
+export type ILoggedUser = {
+  token: string;
+  cliente: ILoggedUserInfos;
+};
+
+export type ILoggedUserInfos = {
+  name: string;
+  setor: string;
+  cargo: string;
+  contact: string;
+  userType: string;
+  address: IUserAddress;
+  document: string;
+  email: string;
+};
+
+export type IUserAddress = {
+  street: string;
+  number: number;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: string;
+  region: string;
 };
 
 export const UserActionType = {
@@ -9,4 +55,8 @@ export const UserActionType = {
   FETCH_USER_INFO_SUCCESS: '@@user/FETCH_USER_INFO_SUCCESS',
 
   FETCH_USER_INFO_ERROR: '@@user/FETCH_USER_INFO_ERROR',
+
+  OPEN_USER_DETAILS: '@@user/OPEN_USER_DETAILS',
+
+  CLOSE_USER_DETAILS: '@@user/CLOSE_USER_DETAILS',
 };

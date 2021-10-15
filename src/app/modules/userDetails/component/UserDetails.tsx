@@ -1,8 +1,12 @@
 import React from 'react';
 import { Box, TextField, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { Close } from '@material-ui/icons';
 import Profile from '../../../assets/profile.png';
+import { closeUserDetails } from '../../../redux/ducks/user';
 
 export default function UserDetails(): JSX.Element {
+  const dispatch = useDispatch();
   return (
     <Box
       display="flex"
@@ -54,7 +58,11 @@ export default function UserDetails(): JSX.Element {
             margin={2}
             style={{ backgroundColor: 'transparent' }}
           >
-            <img src={Profile} alt="logo" style={{ maxWidth: `190px` }} />
+            <Close
+              onClick={() => {
+                dispatch(closeUserDetails());
+              }}
+            />
           </Box>
         </Box>
         <Box
