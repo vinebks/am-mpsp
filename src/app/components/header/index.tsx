@@ -54,7 +54,10 @@ export default function MenuAppBar(): JSX.Element {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            onClick={() => setUnderline('homepage')}
+            onClick={() => {
+              setUnderline('homepage');
+              history.push('/home');
+            }}
             marginRight={5}
             height="80px"
             borderBottom={
@@ -65,19 +68,13 @@ export default function MenuAppBar(): JSX.Element {
               variant="subtitle1"
               align="center"
               className={classes.title}
+              style={{
+                color: 'yellow',
+                fontSize: '25px',
+                fontWeight: 'bold',
+              }}
             >
-              <Link
-                variant="inherit"
-                href="/home"
-                underline="none"
-                style={{
-                  color: 'yellow',
-                  fontSize: '25px',
-                  fontWeight: 'bold',
-                }}
-              >
-                Pagina Inicial
-              </Link>
+              Pagina Inicial
             </Typography>
           </Box>
 
@@ -86,7 +83,10 @@ export default function MenuAppBar(): JSX.Element {
               display="flex"
               alignItems="center"
               height="80px"
-              onClick={() => setUnderline('dashboard')}
+              onClick={() => {
+                setUnderline('dashboard');
+                history.push('/dashboard');
+              }}
               borderBottom={
                 underline === 'dashboard' ? 'solid 2px yellow' : 'none'
               }
@@ -94,20 +94,14 @@ export default function MenuAppBar(): JSX.Element {
               <Typography
                 variant="subtitle1"
                 className={classes.title}
-                style={{ flex: 1 }}
+                style={{
+                  flex: 1,
+                  color: 'yellow',
+                  fontSize: '25px',
+                  fontWeight: 'bold',
+                }}
               >
-                <Link
-                  variant="inherit"
-                  href="/dashboard"
-                  underline="none"
-                  style={{
-                    color: 'yellow',
-                    fontSize: '25px',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Dashboard
-                </Link>
+                Dashboard
               </Typography>
             </Box>
           </Box>
@@ -127,7 +121,12 @@ export default function MenuAppBar(): JSX.Element {
               <Typography
                 variant="subtitle1"
                 className={classes.title}
-                style={{ flex: 1 }}
+                style={{
+                  flex: 1,
+                  color: 'yellow',
+                  fontSize: '25px',
+                  fontWeight: 'bold',
+                }}
               >
                 Meu Perfil
               </Typography>
