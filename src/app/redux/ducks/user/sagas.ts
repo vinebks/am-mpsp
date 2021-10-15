@@ -9,6 +9,8 @@ import {
   delay,
 } from 'redux-saga/effects';
 import {
+  fetchBalanceError,
+  fetchBalanceSuccess,
   fetchEmployeesData,
   fetchEmployeesDataError,
   fetchEmployeesDataSuccess,
@@ -70,12 +72,30 @@ function* handleFetchEmployeesInfos(action: IReducerAction<string>): Generator {
   }
 }
 
+function* getBalanceValue(action: IReducerAction<string>): Generator {
+  try {
+    const document = action.payload;
+
+    const response = (yield call(
+      API.get,
+      `http://localhost:3001/faxinaja-api/amusers/get-balance/${document}`,
+    )) as number;
+
+    if (response) {
+      yield put(fetchBalanceSuccess(response));
+    }
+  } catch (err) {
+    yield put(fetchBalanceError());
+  }
+}
+
 function* watchFetchRequest(): Generator {
   yield takeLatest(UserActionType.FETCH_USER_INFO, handleFetchUserInfos);
   yield takeLatest(
     UserActionType.FETCH_EMPLOYEES_INFO,
     handleFetchEmployeesInfos,
   );
+  yield takeLatest(UserActionType.FETCH_BALANCE, getBalanceValue);
 }
 
 export function* userSaga(): Generator {

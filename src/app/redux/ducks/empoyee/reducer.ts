@@ -30,6 +30,21 @@ export const employeeReducer = (
         draft.isLoading = false;
       });
 
+    case EmployeeActionType.UPDATE_EMPLOYEE_SALARY:
+      return produce(state, draft => {
+        draft.isLoading = true;
+      });
+
+    case EmployeeActionType.UPDATE_EMPLOYEE_SALARY_SUCCESS:
+      return produce(state, draft => {
+        draft.isLoading = false;
+      });
+
+    case EmployeeActionType.UPDATE_EMPLOYEE_SALARY_ERROR:
+      return produce(state, draft => {
+        draft.isLoading = false;
+      });
+
     default:
       return state;
   }

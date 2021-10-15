@@ -30,3 +30,12 @@ export const fetchEmployeesDataSuccess = (
 
 export const fetchEmployeesDataError = (): IReducerAction<{}> =>
   action(UserActionType.FETCH_EMPLOYEES_INFO_ERROR, {});
+
+export const fetchBalance = (document: string): IReducerAction<string> =>
+  action(UserActionType.FETCH_BALANCE, document);
+
+export const fetchBalanceSuccess = (balance: number): IReducerAction<{}> =>
+  action(UserActionType.FETCH_BALANCE_SUCCESS, balance);
+
+export const fetchBalanceError = (): IReducerAction<{}> =>
+  action(UserActionType.FETCH_BALANCE_ERROR, {});

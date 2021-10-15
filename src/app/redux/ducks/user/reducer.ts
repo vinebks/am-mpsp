@@ -14,7 +14,7 @@ export const initialState: IUserState = {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const userReducer = (
   state = initialState,
-  action: IReducerAction<string | ILoggedUser | IEmployeesType>,
+  action: IReducerAction<string | ILoggedUser | IEmployeesType | number>,
 ) => {
   switch (action.type) {
     case UserActionType.FETCH_USER_INFO:
@@ -51,6 +51,23 @@ export const userReducer = (
       });
 
     case UserActionType.FETCH_EMPLOYEES_INFO_ERROR:
+      return produce(state, draft => {
+        draft.isLoading = false;
+      });
+
+    case UserActionType.FETCH_BALANCE:
+      return produce(state, draft => {
+        draft.userDetails = false;
+        draft.isLoading = false;
+      });
+
+    case UserActionType.FETCH_BALANCE_SUCCESS:
+      return produce(state, draft => {
+        draft.loggedUser.cliente.balance = action.payload as number;
+        draft.isLoading = false;
+      });
+
+    case UserActionType.FETCH_BALANCE_ERROR:
       return produce(state, draft => {
         draft.isLoading = false;
       });

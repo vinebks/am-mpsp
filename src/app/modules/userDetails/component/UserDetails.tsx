@@ -40,6 +40,7 @@ export default function UserDetails(): JSX.Element {
           userId: employee.userId,
           aumento: salary,
           gestorDocument: loggedUser.cliente.document,
+          setor: loggedUser.cliente.setor,
         }),
       );
     },

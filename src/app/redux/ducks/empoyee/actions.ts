@@ -18,13 +18,12 @@ export const updateEmployeeSalary = (data: {
   userId: string;
   aumento: number;
   gestorDocument: string;
+  setor: string;
 }): IReducerAction<{}> =>
   action(EmployeeActionType.UPDATE_EMPLOYEE_SALARY, data);
 
-export const updateEmployeeSalarySuccess = (
-  data: IEmployeesDetails,
-): IReducerAction<{}> =>
-  action(EmployeeActionType.UPDATE_EMPLOYEE_SALARY_SUCCESS, data);
+export const updateEmployeeSalarySuccess = (): IReducerAction<{}> =>
+  action(EmployeeActionType.UPDATE_EMPLOYEE_SALARY_SUCCESS, {});
 
 export const updateEmployeeSalaryError = (): IReducerAction<{}> =>
   action(EmployeeActionType.UPDATE_EMPLOYEE_SALARY_ERROR, {});
