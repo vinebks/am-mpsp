@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import FormGroup from '@material-ui/core/FormGroup';
 import { Box, Link } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import EyLogo from '../../assets/eylogo.png';
 import Profile from '../../assets/profile.png';
 import { IApplicationState } from '../../redux/ducks';
@@ -55,7 +55,6 @@ export default function MenuAppBar(): JSX.Element {
             alignItems="center"
             justifyContent="center"
             onClick={() => {
-              setUnderline('homepage');
               history.push('/home');
             }}
             marginRight={5}
@@ -84,7 +83,6 @@ export default function MenuAppBar(): JSX.Element {
               alignItems="center"
               height="80px"
               onClick={() => {
-                setUnderline('dashboard');
                 history.push('/dashboard');
               }}
               borderBottom={
@@ -111,7 +109,6 @@ export default function MenuAppBar(): JSX.Element {
               alignItems="center"
               height="80px"
               onClick={() => {
-                setUnderline('dashboard');
                 history.push('/profile');
               }}
               borderBottom={
@@ -152,7 +149,9 @@ export default function MenuAppBar(): JSX.Element {
               fontWeight: 'bold',
             }}
           >
-            Bem vindo(a), {loggedUser.cliente.name}
+            {/* eslint-disable-next-line prettier/prettier */}
+            Bem vindo(a)
+            {loggedUser.cliente ? loggedUser.cliente.name : ''}
           </Typography>
 
           <Box display="flex" alignContent="end">

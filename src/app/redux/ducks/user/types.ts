@@ -33,6 +33,7 @@ export type ILoggedUserInfos = {
   name: string;
   setor: string;
   cargo: string;
+  balance: number;
   contact: string;
   userType: string;
   address: IUserAddress;

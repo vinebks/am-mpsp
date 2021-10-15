@@ -79,7 +79,7 @@ export default function HomeUser(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}
               >
-                {loggedUser.cliente.setor}
+                {loggedUser.cliente ? loggedUser.cliente.setor : '-'}
               </Typography>
             </Box>
           </Box>
@@ -101,7 +101,9 @@ export default function HomeUser(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'yellow', fontSize: '25px', fontWeight: 'bold' }}
             >
-              R$ 19.999,00
+              {loggedUser.cliente
+                ? formatCurrency(loggedUser.cliente.balance)
+                : '-'}
             </Typography>
           </Box>
 
@@ -124,7 +126,9 @@ export default function HomeUser(): JSX.Element {
               variant="subtitle1"
               style={{ color: 'yellow', fontSize: '25px', fontWeight: 'bold' }}
             >
-              {formatCurrency(budgetAndEmployees.budget)}
+              {budgetAndEmployees
+                ? formatCurrency(budgetAndEmployees.budget)
+                : '-'}
             </Typography>
           </Box>
         </Box>
