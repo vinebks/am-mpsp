@@ -57,7 +57,6 @@ export const userReducer = (
 
     case UserActionType.FETCH_BALANCE:
       return produce(state, draft => {
-        draft.userDetails = false;
         draft.isLoading = false;
       });
 

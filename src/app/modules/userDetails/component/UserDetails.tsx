@@ -386,7 +386,7 @@ export default function UserDetails(): JSX.Element {
                         borderRadius: '20px',
                       }}
                     >
-                      Entrar
+                      Confirmar
                     </Button>
                   </Box>
                 </Form>

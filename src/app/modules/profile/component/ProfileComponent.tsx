@@ -1,8 +1,12 @@
 import React from 'react';
 import { Box, TextField, Typography } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import Profile from '../../../assets/profile.png';
+import { IApplicationState } from '../../../redux/ducks';
 
 export default function ProfileComponent(): JSX.Element {
+  const { loggedUser } = useSelector((state: IApplicationState) => state.user);
+
   return (
     <Box
       display="flex"
@@ -43,7 +47,7 @@ export default function ProfileComponent(): JSX.Element {
               variant="h3"
               style={{ color: 'white', fontWeight: 'bold' }}
             >
-              Vinicius Santos
+              {loggedUser.cliente ? loggedUser.cliente.name : '='}
             </Typography>
           </Box>
           <Box
@@ -84,7 +88,7 @@ export default function ProfileComponent(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '24px' }}
               >
-                vinicius.jesus@ernestyoung.com
+                {loggedUser.cliente ? loggedUser.cliente.email : '='}
               </Typography>
             </Box>
 
@@ -99,7 +103,7 @@ export default function ProfileComponent(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '24px' }}
               >
-                Recursos Humanos
+                {loggedUser.cliente ? loggedUser.cliente.setor : '='}
               </Typography>
             </Box>
 
@@ -114,7 +118,7 @@ export default function ProfileComponent(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '24px' }}
               >
-                Gestor
+                {loggedUser.cliente ? loggedUser.cliente.cargo : '='}
               </Typography>
             </Box>
           </Box>
@@ -137,7 +141,7 @@ export default function ProfileComponent(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '24px' }}
               >
-                Matriz
+                {loggedUser.cliente ? loggedUser.cliente.address.country : '='}
               </Typography>
             </Box>
 
@@ -152,7 +156,7 @@ export default function ProfileComponent(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '24px' }}
               >
-                +55 (11)98971-2891
+                {loggedUser.cliente ? loggedUser.cliente.contact : '='}
               </Typography>
             </Box>
 
@@ -167,7 +171,7 @@ export default function ProfileComponent(): JSX.Element {
                 variant="subtitle1"
                 style={{ color: 'white', fontSize: '24px' }}
               >
-                -
+                Gerenciamento de Projeto
               </Typography>
             </Box>
           </Box>
